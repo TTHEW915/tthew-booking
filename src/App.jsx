@@ -159,20 +159,20 @@ export default function App() {
   // Derived styles from active palette p
   const S = {
     app: { minHeight: "100vh", background: p.bg, color: p.text, fontFamily: "'Cormorant Garamond','Georgia',serif", transition: "background 0.6s, color 0.6s" },
-    header: { padding: "2.5rem 2rem 1.5rem", borderBottom: `1px solid ${p.surface}`, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.25rem", transition: "border-color 0.6s" },
+    header: { padding: "clamp(1.25rem, 4vw, 2.5rem) 1.25rem 1.25rem", borderBottom: `1px solid ${p.surface}`, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.25rem", transition: "border-color 0.6s" },
     logo: { fontSize: "1rem", letterSpacing: "0.3em", textTransform: "uppercase", color: p.muted, fontFamily: "'Montserrat',sans-serif", fontWeight: 500 },
     title: { fontSize: "clamp(1.8rem,5vw,3rem)", fontWeight: 700, color: p.text, margin: 0, letterSpacing: "-0.02em" },
     subtitle: { fontSize: "1rem", color: p.muted, margin: 0, fontFamily: "'Montserrat',sans-serif", fontWeight: 400 },
-    container: { maxWidth: 760, margin: "0 auto", padding: "2rem 1.5rem 4rem" },
-    card: { background: p.card, border: `1px solid ${p.surface}`, borderRadius: 16, padding: "2rem", marginBottom: "1.5rem", boxShadow: `0 4px 24px ${p.text}08`, transition: "background 0.6s, border-color 0.6s" },
+    container: { maxWidth: 760, margin: "0 auto", padding: "1.5rem 1rem 4rem" },
+    card: { background: p.card, border: `1px solid ${p.surface}`, borderRadius: 16, padding: "clamp(1.25rem, 4vw, 2rem)", marginBottom: "1.5rem", boxShadow: `0 4px 24px ${p.text}08`, transition: "background 0.6s, border-color 0.6s" },
     sectionTitle: { fontSize: "1.5rem", fontWeight: 700, color: p.text, marginBottom: "0.25rem" },
     sectionSub: { fontSize: "0.85rem", color: p.muted, fontFamily: "'Montserrat',sans-serif", marginBottom: "1.75rem" },
     label: { display: "block", fontSize: "0.8rem", letterSpacing: "0.12em", textTransform: "uppercase", color: p.muted, fontFamily: "'Montserrat',sans-serif", marginBottom: "0.5rem", fontWeight: 600 },
     input: { width: "100%", padding: "0.75rem 1rem", background: p.bg, border: `1px solid ${p.surface}`, borderRadius: 8, color: p.text, fontSize: "1rem", fontFamily: "'Cormorant Garamond',serif", outline: "none", boxSizing: "border-box", transition: "border-color 0.2s" },
     select: { width: "100%", padding: "0.75rem 1rem", background: p.bg, border: `1px solid ${p.surface}`, borderRadius: 8, color: p.text, fontSize: "1rem", fontFamily: "'Cormorant Garamond',serif", outline: "none", boxSizing: "border-box" },
-    grid2: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" },
+    grid2: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" },
     fieldGroup: { marginBottom: "1.25rem" },
-    chip: (active) => ({ display: "inline-block", padding: "0.5rem 1rem", borderRadius: 100, border: `1.5px solid ${active ? p.primary : p.surface}`, background: active ? p.primary + "22" : "transparent", color: active ? p.primary : p.muted, cursor: "pointer", fontSize: "0.88rem", fontFamily: "'Montserrat',sans-serif", fontWeight: 500, margin: "0.25rem", transition: "all 0.2s", userSelect: "none" }),
+    chip: (active) => ({ display: "inline-block", maxWidth: "100%", padding: "0.5rem 1rem", borderRadius: 100, border: `1.5px solid ${active ? p.primary : p.surface}`, background: active ? p.primary + "22" : "transparent", color: active ? p.primary : p.muted, cursor: "pointer", fontSize: "0.88rem", fontFamily: "'Montserrat',sans-serif", fontWeight: 500, margin: "0.25rem", transition: "all 0.2s", userSelect: "none" }),
     optionCard: (active) => ({ padding: "1rem 1.25rem", borderRadius: 12, border: `1.5px solid ${active ? p.primary : p.surface}`, background: active ? p.primary + "12" : p.bg, cursor: "pointer", marginBottom: "0.75rem", transition: "all 0.2s" }),
     optionTitle: (active) => ({ fontWeight: 700, fontSize: "1.05rem", color: active ? p.primary : p.text }),
     optionDesc: { fontSize: "0.82rem", color: p.muted, fontFamily: "'Montserrat',sans-serif", marginTop: "0.2rem" },
@@ -205,6 +205,16 @@ export default function App() {
           .oc { cursor:pointer; transition:transform 0.2s,box-shadow 0.2s,z-index 0s; }
           .cc { cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; }
           .cc:hover { transform:translate(-50%,-50%) scale(1.06)!important; }
+          * { box-sizing: border-box; }
+          @media (max-width: 600px) {
+            .wheel-wrap { transform: scale(0.52); transform-origin: top center; }
+            .wheel-outer { overflow: visible !important; }
+            .mobile-grid { grid-template-columns: 1fr !important; }
+            .mobile-stack { flex-direction: column !important; gap: 0.5rem !important; }
+            .mobile-pad { padding: 1.25rem !important; }
+            .mobile-btn { padding: 0.75rem 1.5rem !important; font-size: 0.78rem !important; }
+            .mobile-title { font-size: 1.6rem !important; }
+          }
         `}</style>
 
         <div style={{ padding: "2rem 2rem 1.25rem", borderBottom: "1px solid #EDE5D8", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.2rem" }}>
@@ -220,7 +230,8 @@ export default function App() {
           </div>
 
           {/* Wheel */}
-          <div style={{ position: "relative", width: WHEEL_W, height: WHEEL_H, margin: "0 auto", maxWidth: "100%", overflow: "visible" }}>
+          <div className="wheel-wrap" style={{ width: "100%", overflowX: "hidden" }}>
+          <div className="wheel-outer" style={{ position: "relative", width: WHEEL_W, height: WHEEL_H, margin: "0 auto", maxWidth: "100%", overflow: "visible" }}>
             {/* Orbit ring SVG */}
             <svg style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}
               viewBox={`0 0 ${WHEEL_W} ${WHEEL_H}`} preserveAspectRatio="xMidYMid meet">
@@ -296,6 +307,7 @@ export default function App() {
               );
             })}
           </div>
+          </div>{/* end wheel-wrap */}
 
           {/* Custom builder panel */}
           {showCustomBuilder && (
@@ -644,7 +656,7 @@ export default function App() {
         <div style={S.stepLabel}>{STEPS[step]} — Step {step+1} of {STEPS.length}</div>
         <div style={S.progressBar}><div style={S.progressFill} /></div>
         <div style={S.card}>{renderStep()}</div>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"0.75rem"}}>
           <div>
             {step === 0
               ? <button style={S.btnOutline} onClick={()=>setPalette(null)}>← Palette</button>
