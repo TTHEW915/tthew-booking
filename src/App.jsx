@@ -206,14 +206,12 @@ export default function App() {
           .cc { cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; }
           .cc:hover { transform:translate(-50%,-50%) scale(1.06)!important; }
           * { box-sizing: border-box; }
-          @media (max-width: 600px) {
-            .wheel-wrap { transform: scale(0.52); transform-origin: top center; }
+          @media (max-width: 700px) {
+            .wheel-wrap { transform: scale(0.42); transform-origin: top center; margin-bottom: -320px; }
             .wheel-outer { overflow: visible !important; }
-            .mobile-grid { grid-template-columns: 1fr !important; }
-            .mobile-stack { flex-direction: column !important; gap: 0.5rem !important; }
-            .mobile-pad { padding: 1.25rem !important; }
-            .mobile-btn { padding: 0.75rem 1.5rem !important; font-size: 0.78rem !important; }
-            .mobile-title { font-size: 1.6rem !important; }
+          }
+          @media (max-width: 430px) {
+            .wheel-wrap { transform: scale(0.36); transform-origin: top center; margin-bottom: -360px; }
           }
         `}</style>
 
