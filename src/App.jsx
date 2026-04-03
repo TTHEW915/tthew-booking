@@ -21,7 +21,7 @@ const initialForm = {
   extras: [], customNotes: "",
   turnaround: "", deliveryFormat: [], budget: "",
   name: "", email: "", phone: "",
-  otherEventType: "", otherEditingStyle: "", otherSong: "", otherExtra: "", otherDelivery: "",
+  otherEventType: "", otherEditingStyle: "", otherSong: "", otherExtra: "", otherDelivery: "", otherColorGrading: "",
 };
 
 const toggle = (arr, val) => arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val];
@@ -497,13 +497,16 @@ export default function App() {
           </div>
           <div style={S.fieldGroup}>
             <label style={S.label}>Color Grading</label>
-            <div>{["Warm & Golden","Cool & Moody","Natural / True-to-Life","Bright & Airy","Dark & Dramatic","Black & White","No Preference"].map(t=>(
+            <div>{["Warm & Golden","Cool & Moody","Natural / True-to-Life","Bright & Airy","Dark & Dramatic","Black & White","No Preference","Other"].map(t=>(
               <span key={t} style={S.chip(form.colorGrading===t)} onClick={()=>set("colorGrading",t)}>{t}</span>
             ))}</div>
+            {form.colorGrading === "Other" && (
+              <input style={{...S.input, marginTop:"0.75rem"}} placeholder="Describe the color grading style you have in mind..." value={form.otherColorGrading||""} onChange={e=>set("otherColorGrading",e.target.value)} autoFocus />
+            )}
           </div>
           <div style={S.fieldGroup}>
-            <label style={S.label}>Social Media Formats</label>
-            <div>{["Instagram Reels (9:16)","TikTok (9:16)","YouTube (16:9)","Instagram Feed (4:5)","Facebook","LinkedIn"].map(t=>(
+            <label style={S.label}>Social Media Format</label>
+            <div>{["Vertical (9:16)","Horizontal (16:9)","Both"].map(t=>(
               <span key={t} style={S.chip(form.socialFormats.includes(t))} onClick={()=>toggleArr("socialFormats",t)}>{t}</span>
             ))}</div>
           </div>
@@ -608,7 +611,8 @@ export default function App() {
           ["Coverage",form.packageType.join(", ")],["Videographers",form.videographerCount],
           ["Locations",form.locations],["Editing Style",form.editingStyle],
           ["Color Grading",form.colorGrading],["Social Formats",form.socialFormats.join(", ")],
-          ["Song / Music",form.songChoice||form.musicGenre],["Extras",form.extras.join(", ")],
+          ["Song / Music",form.songChoice||form.musicGenre],
+          ["Color Grading (other)",form.otherColorGrading],["Extras",form.extras.join(", ")],
           ["Turnaround",form.turnaround],["Delivery",form.deliveryFormat.join(", ")],
           ["Budget",form.budget],["Palette",p.name],
           ["Name",form.name],["Email",form.email],["Phone",form.phone],["Notes",form.customNotes],
@@ -1014,13 +1018,16 @@ export default function App() {
           </div>
           <div style={S.fieldGroup}>
             <label style={S.label}>Color Grading</label>
-            <div>{["Warm & Golden","Cool & Moody","Natural / True-to-Life","Bright & Airy","Dark & Dramatic","Black & White","No Preference"].map(t=>(
+            <div>{["Warm & Golden","Cool & Moody","Natural / True-to-Life","Bright & Airy","Dark & Dramatic","Black & White","No Preference","Other"].map(t=>(
               <span key={t} style={S.chip(form.colorGrading===t)} onClick={()=>set("colorGrading",t)}>{t}</span>
             ))}</div>
+            {form.colorGrading === "Other" && (
+              <input style={{...S.input, marginTop:"0.75rem"}} placeholder="Describe the color grading style you have in mind..." value={form.otherColorGrading||""} onChange={e=>set("otherColorGrading",e.target.value)} autoFocus />
+            )}
           </div>
           <div style={S.fieldGroup}>
-            <label style={S.label}>Social Media Formats</label>
-            <div>{["Instagram Reels (9:16)","TikTok (9:16)","YouTube (16:9)","Instagram Feed (4:5)","Facebook","LinkedIn"].map(t=>(
+            <label style={S.label}>Social Media Format</label>
+            <div>{["Vertical (9:16)","Horizontal (16:9)","Both"].map(t=>(
               <span key={t} style={S.chip(form.socialFormats.includes(t))} onClick={()=>toggleArr("socialFormats",t)}>{t}</span>
             ))}</div>
           </div>
@@ -1125,7 +1132,8 @@ export default function App() {
           ["Coverage",form.packageType.join(", ")],["Videographers",form.videographerCount],
           ["Locations",form.locations],["Editing Style",form.editingStyle],
           ["Color Grading",form.colorGrading],["Social Formats",form.socialFormats.join(", ")],
-          ["Song / Music",form.songChoice||form.musicGenre],["Extras",form.extras.join(", ")],
+          ["Song / Music",form.songChoice||form.musicGenre],
+          ["Color Grading (other)",form.otherColorGrading],["Extras",form.extras.join(", ")],
           ["Turnaround",form.turnaround],["Delivery",form.deliveryFormat.join(", ")],
           ["Budget",form.budget],["Palette",p.name],
           ["Name",form.name],["Email",form.email],["Phone",form.phone],["Notes",form.customNotes],
