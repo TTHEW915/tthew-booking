@@ -5,18 +5,10 @@ const PALETTES = [
   { name: "Midnight & Blush",  bg: "#0E0E14", surface: "#1A1A24", primary: "#E8A0B0", text: "#F5F0F2", accent: "#C96D85", muted: "#8A7A82", card: "#16161E",   tag: "Moody · Romantic" },
   { name: "Sage & Linen",      bg: "#F2F4F0", surface: "#E0E8DC", primary: "#5A7A5E", text: "#1E2820", accent: "#3D5C41", muted: "#7A8C7C", card: "#FFFFFF",   tag: "Natural · Fresh" },
   { name: "Dusty Rose",        bg: "#FDF4F4", surface: "#F2E2E2", primary: "#C4727A", text: "#2E1A1A", accent: "#A85560", muted: "#9E7070", card: "#FFFFFF",   tag: "Soft · Feminine" },
-  { name: "Slate & Silver",    bg: "#1C1F26", surface: "#262B36", primary: "#A8B4C8", text: "#E8ECF2", accent: "#7A8EA8", muted: "#6A7688", card: "#22272F",   tag: "Modern · Minimal" },
   { name: "Champagne & Blush", bg: "#FBF6EE", surface: "#EEE4D4", primary: "#C9956A", text: "#2A1E14", accent: "#B07848", muted: "#9A7A5A", card: "#FFFFFF",   tag: "Warm · Luxe" },
   { name: "Deep Navy",         bg: "#0A0E1A", surface: "#141828", primary: "#5B8FD4", text: "#E8EEF8", accent: "#3A6AB8", muted: "#5A6A8A", card: "#0E1220",   tag: "Bold · Refined" },
   { name: "Terracotta",        bg: "#FBF0E8", surface: "#EDD8C8", primary: "#C4623A", text: "#281408", accent: "#A04A28", muted: "#9A6A50", card: "#FFFFFF",   tag: "Earthy · Warm" },
   { name: "Lavender Mist",     bg: "#F4F2FA", surface: "#E4DEEE", primary: "#7A6AAC", text: "#1E1830", accent: "#5A4A8C", muted: "#8878A8", card: "#FFFFFF",   tag: "Dreamy · Soft" },
-  { name: "Emerald & Cream",   bg: "#F4FAF5", surface: "#D8EAD8", primary: "#2E7A4A", text: "#0E2018", accent: "#1A5A34", muted: "#5A8A68", card: "#FFFFFF",   tag: "Lush · Organic" },
-  { name: "Obsidian & Gold",   bg: "#0C0C0C", surface: "#1A1A1A", primary: "#C8A84B", text: "#F0ECD8", accent: "#A07830", muted: "#787060", card: "#111111",   tag: "Dark · Opulent" },
-  { name: "Blush & Cream",     bg: "#FFF8F5", surface: "#F5E8E0", primary: "#D4897A", text: "#2A1614", accent: "#B86A5A", muted: "#A07870", card: "#FFFFFF",   tag: "Romantic · Airy" },
-  { name: "Cobalt & White",    bg: "#F0F4FF", surface: "#D8E2F8", primary: "#2850C8", text: "#0A1440", accent: "#1A3898", muted: "#6878A8", card: "#FFFFFF",   tag: "Bold · Clean" },
-  { name: "Mocha & Cream",     bg: "#FAF6F0", surface: "#EDE4D8", primary: "#7A5040", text: "#1E0E08", accent: "#5A3428", muted: "#9A7868", card: "#FFFFFF",   tag: "Rich · Warm" },
-  { name: "Arctic Frost",      bg: "#F0F8FF", surface: "#D8EEF8", primary: "#4A9AC4", text: "#0A2030", accent: "#2A7AA4", muted: "#6A9AB4", card: "#FFFFFF",   tag: "Cool · Crisp" },
-  { name: "Plum & Pearl",      bg: "#1A0820", surface: "#280E30", primary: "#D4A0C0", text: "#F0E8F4", accent: "#A870A0", muted: "#887090", card: "#200A28",   tag: "Dramatic · Luxe" },
 ];
 
 const STEPS = ["Event Info", "Coverage", "Style", "Music", "Extras", "Logistics", "Summary"];
