@@ -508,7 +508,7 @@ export default function App() {
               <span key={t} style={S.chip(form.colorGrading===t)} onClick={()=>set("colorGrading",t)}>{t}</span>
             ))}</div>
             {form.colorGrading === "Other" && (
-              <input style={{...S.input, marginTop:"0.75rem"}} placeholder="Describe the color grading style you have in mind..." value={form.otherColorGrading||""} onChange={e=>set("otherColorGrading",e.target.value)} autoFocus />
+              <input style={{...S.input, marginTop:"0.75rem"}} placeholder="Describe the color grading style or paste a reference link here..." value={form.otherColorGrading||""} onChange={e=>set("otherColorGrading",e.target.value)} autoFocus />
             )}
           </div>
           <div style={S.fieldGroup}>
@@ -588,7 +588,7 @@ export default function App() {
             <label style={S.label}>Approximate Budget</label>
             <select style={S.select} value={form.budget} onChange={e=>set("budget",e.target.value)}>
               <option value="">Select a range...</option>
-              {["Under $500","$500–$1,000","$1,000–$2,000","$2,000–$3,500","$3,500–$5,000","$5,000+","Flexible / Let's talk"].map(o=><option key={o}>{o}</option>)}
+              {["Under $500","$500–$1,000","$1,000–$2,000","$2,000–$3,500","$3,500–$5,000","$5,000–$7,500","$7,500–$10,000","$10,000–$15,000","$15,000–$20,000","$20,000+","Flexible / Let's talk"].map(o=><option key={o}>{o}</option>)}
             </select>
           </div>
           <div style={{marginTop:"1.5rem",paddingTop:"1.5rem",borderTop:`1px solid ${p.surface}`}}>
